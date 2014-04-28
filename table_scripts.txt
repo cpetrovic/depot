@@ -1,0 +1,44 @@
+CREATE TABLE `artists` (
+  `artistID` int(25) NOT NULL,
+  `fname` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `lname` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `cv` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `bio` varchar(2000) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `fullname` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`artistID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+CREATE TABLE `portfolio` (
+  `portfolioID` int(25) NOT NULL AUTO_INCREMENT,
+  `artistID` int(11) NOT NULL,
+  `name` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`portfolioID`),
+  KEY `artistID` (`artistID`)
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+CREATE TABLE `images` (
+  `imageID` int(11) NOT NULL AUTO_INCREMENT,
+  `portfolioID` int(11) NOT NULL,
+  `creator` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `caption` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `media` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `size` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `price` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pathto` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `artistID` int(11) NOT NULL,
+  PRIMARY KEY (`imageID`),
+  KEY `portfolioID` (`portfolioID`),
+  KEY `artistID` (`artistID`)
+) ENGINE=MyISAM AUTO_INCREMENT=230 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+CREATE TABLE `users` (
+  `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `pass` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
